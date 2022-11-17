@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app: web-test-blue
+  name: web-test-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: web-test-blue
+  strategy: {}
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.1 (a9d05d509)
+      creationTimestamp: null
+      labels:
+        app: web-test-blue
+        app.network/zitiblue: "true"
+    spec:
+      containers:
+        - image: crccheck/hello-world
+          name: web-test-blue
+          ports:
+            - containerPort: 8000
+          resources: {}
+      restartPolicy: Always
+status: {}

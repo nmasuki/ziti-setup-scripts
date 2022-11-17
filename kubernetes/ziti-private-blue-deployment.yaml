@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+  labels:
+    app: ziti-private-blue
+  name: ziti-private-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ziti-private-blue
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.26.1 (a9d05d509)
+      creationTimestamp: null
+      labels:
+        app: ziti-private-blue
+        app.network/zitiblue: "true"
+    spec:
+      containers:
+        - args:
+            - /openziti/scripts/run-router.sh
+            - private
+          command:
+            - /bin/bash
+          env:
+            - name: ZITI_EDGE_ROUTER_RAWNAME
+              value: ziti-private-blue
+            - name: ZITI_CONTROLLER_RAWNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ZITI_CONTROLLER_RAWNAME
+                  name: env
+            - name: ZITI_EDGE_CONTROLLER_RAWNAME
+              valueFrom:
+                configMapKeyRef:
+                  key: ZITI_EDGE_CONTROLLER_RAWNAME
+                  name: env
+          image: openziti/quickstart
+          name: ziti-private-blue
+          resources: {}
+          volumeMounts:
+            - mountPath: /mnt/openziti
+              name: ziti-fs
+      restartPolicy: Always
+      volumes:
+        - name: ziti-fs
+          persistentVolumeClaim:
+            claimName: ziti-fs
+status: {}

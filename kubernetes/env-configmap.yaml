@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  ZITI_CONTROLLER_RAWNAME: ziti-controller
+  ZITI_EDGE_CONTROLLER_RAWNAME: ziti-edge-controller
+  ZITI_EDGE_IDENTITY_ENROLLMENT_DURATION: ""
+  ZITI_EDGE_ROUTER_ENROLLMENT_DURATION: ""
+  ZITI_IMAGE: openziti/quickstart
+  ZITI_VERSION: latest
+kind: ConfigMap
+metadata:
+  labels:
+    app: ziti-controller-env
+  name: env

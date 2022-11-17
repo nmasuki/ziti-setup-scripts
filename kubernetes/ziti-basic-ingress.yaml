@@ -1,0 +1,58 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ziti-basic-ingress
+  annotations:
+     service.beta.kubernetes.io/do-loadbalancer-name: /$1
+spec:
+  rules:
+  - host: "ctrl.threatfend.io"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ziti-controller
+            port:  
+              number: 80
+  - host: "console.threatfend.io"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:          
+          service:
+            name: ziti-console
+            port:  
+              number: 80
+  - host: "console.threatfend.io"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:                  
+          service:
+            name: ziti-console
+            port:  
+              number: 8080
+  - host: "router1.threatfend.io"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ziti-edge-router
+            port:  
+              number: 80
+  - host: "router2.threatfend.io"
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ziti-edge-router-wss
+            port:  
+              number: 80

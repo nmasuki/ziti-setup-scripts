@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ziti-console
+  namespace: default
+  labels:
+    app: ziti-console
+  annotations:
+    kubernetes.digitalocean.com/firewall-managed: "false"
+    external-dns.alpha.kubernetes.io/hostname: "threatfend.io"
+    external-dns.alpha.kubernetes.io/ttl: "30"
+    external-dns.alpha.kubernetes.io/access: "private"  
+spec:
+  ports:
+    - name: "1408"
+      port: 1408
+      targetPort: 1408
+    - name: "8443"
+      port: 8443
+      targetPort: 8443
+  selector:
+    app: ziti-console
+  type: LoadBalancer

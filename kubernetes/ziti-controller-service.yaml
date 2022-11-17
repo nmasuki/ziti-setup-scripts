@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ziti-controller
+  namespace: default
+  labels:
+    app: ziti-controller
+  annotations:
+    kubernetes.digitalocean.com/firewall-managed: "false"
+    external-dns.alpha.kubernetes.io/hostname: "threatfend.io"
+    external-dns.alpha.kubernetes.io/ttl: "30"
+    external-dns.alpha.kubernetes.io/access: "private"
+spec:
+  ports:
+    - name: "1280"
+      port: 1280
+      targetPort: 1280
+  selector:
+    app: ziti-controller
+  type: LoadBalancer
