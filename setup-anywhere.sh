@@ -1,6 +1,6 @@
 sudo apt update && sudo apt install jq -y
 
-export EXTERNAL_DNS="threatfend.io"
+export EXTERNAL_DNS="client1.threatfend.io"
 export EXTERNAL_IP="$(curl -s eth0.me)"       
 export ZITI_EDGE_CONTROLLER_IP_OVERRIDE="${EXTERNAL_IP}"
 export ZITI_EDGE_ROUTER_IP_OVERRIDE="${EXTERNAL_IP}"

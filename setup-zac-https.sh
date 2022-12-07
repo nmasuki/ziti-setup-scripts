@@ -6,6 +6,8 @@ sudo apt install nginx -y
 git clone https://github.com/nmasuki/ziti-setup-scripts.git "${ZITI_HOME}/treatfend-scripts"
 cd "${ZITI_HOME}/treatfend-scripts"
 
+source /dev/stdin <<< "$(wget -qO- https://raw.githubusercontent.com/openziti/ziti/release-next/quickstart/docker/image/ziti-cli-functions.sh)"
+
 # nginx site config
 cp ./nginx-config /etc/nginx/sites-enabled/${EXTERNAL_DNS}
 sed -i "1s/.*/server_name $EXTERNAL_DNS;/" /etc/nginx/sites-enabled/${EXTERNAL_DNS}
