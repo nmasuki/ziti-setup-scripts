@@ -4,9 +4,12 @@ if ["$ZITI_CLIENT" == ""]; then
     if ["$1" == ""]; then
         echo "Enter client id (Alphanumeric only):"
         read client_name
+
+        echo $client_name
     fi
 
-    export ZITI_CLIENT=$client_name
+    export ZITI_CLIENT=${client_name}
+    echo ${ZITI_CLIENT}
 fi
 
 # Load env variable 
