@@ -1,5 +1,5 @@
 #!/bin/sh
-if ["$ZITI_CLIENT" == ""]; then
+if [ "$ZITI_CLIENT" == "" ]; then
     client_name=$1
     if ["$1" == ""]; then
         echo "Enter client id (Alphanumeric only):"
