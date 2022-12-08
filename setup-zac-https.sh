@@ -1,5 +1,5 @@
 if [ "ZITI_CLIENT" == ""] then
-    if [ "$1" == ""]; then
+    if [ "$1" == ""] then
         echo "Enter client id (Alphanumeric only):"
         read client_name
     else
