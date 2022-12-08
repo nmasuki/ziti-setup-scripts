@@ -10,13 +10,15 @@ export ZITI_CLIENT=$client_name
 # Load env variable 
 source ~/.ziti/quickstart/${ZITI_CLIENT}/${ZITI_CLIENT}.env
 
-# Setup nginx
-sudo apt update
-sudo apt install nginx -y
-
 # Checkout some scripts
 git clone https://github.com/nmasuki/ziti-setup-scripts.git "${ZITI_HOME}/treatfend-scripts"
 cd "${ZITI_HOME}/treatfend-scripts"
+
+source /dev/stdin <<< "$(wget -qO- https://raw.githubusercontent.com/openziti/ziti/release-next/quickstart/docker/image/ziti-cli-functions.sh)"
+
+# Setup nginx
+sudo apt update
+sudo apt install nginx -y
 
 # nginx site config
 cp ./nginx-config /etc/nginx/sites-enabled/${EXTERNAL_DNS}
