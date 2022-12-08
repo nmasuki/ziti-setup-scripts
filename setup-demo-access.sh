@@ -1,5 +1,14 @@
-#load env viriable 
-source ~/.ziti/quickstart/threatfend/threatfend.env
+if [ "$1" == ""]; then
+    echo "Enter client id (Alphanumeric only):"
+    read client_name
+elif
+    client_name=$1
+fi
+
+export ZITI_CLIENT=$client_name
+
+# Load env variable 
+source ~/.ziti/quickstart/${ZITI_CLIENT}/${ZITI_CLIENT}.env
 
 #Call zitiLogin first before using ziti command
 zitiLogin
