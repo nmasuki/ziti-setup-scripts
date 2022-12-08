@@ -1,11 +1,12 @@
-if [ "$1" == ""]; then
-    echo "Enter client id (Alphanumeric only):"
-    read client_name
-elif
-    client_name=$1
+if [ "ZITI_CLIENT" == ""] then
+    if [ "$1" == ""]; then
+        echo "Enter client id (Alphanumeric only):"
+        read client_name
+    elif
+        client_name=$1
+    fi
+    export ZITI_CLIENT=$client_name
 fi
-
-export ZITI_CLIENT=$client_name
 
 # Load env variable 
 source ~/.ziti/quickstart/${ZITI_CLIENT}/${ZITI_CLIENT}.env

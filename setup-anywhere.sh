@@ -1,13 +1,15 @@
 sudo apt update && sudo apt install jq -y
 
-if [ "$1" == ""]; then
-    echo "Enter client id (Alphanumeric only):"
-    read client_name
-elif
-    client_name=$1
+if [ "ZITI_CLIENT" == ""] then
+    if [ "$1" == ""]; then
+        echo "Enter client id (Alphanumeric only):"
+        read client_name
+    elif
+        client_name=$1
+    fi
+    export ZITI_CLIENT=$client_name
 fi
 
-export ZITI_CLIENT=$client_name
 export EXTERNAL_DNS="${ZITI_CLIENT}.threatfend.io"
 export EXTERNAL_IP="$(curl -s eth0.me)"       
 export ZITI_EDGE_CONTROLLER_IP_OVERRIDE="${EXTERNAL_IP}"
