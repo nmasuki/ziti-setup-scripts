@@ -17,7 +17,7 @@ git clone https://github.com/nmasuki/ziti-setup-scripts.git "${ZITI_HOME}/treatf
 git pull
 cd "${ZITI_HOME}/treatfend-scripts"
 
-source /dev/stdin <<< "$(wget -qO- https://raw.githubusercontent.com/openziti/ziti/release-next/quickstart/docker/image/ziti-cli-functions.sh)"
+source"$(wget -qO- https://raw.githubusercontent.com/openziti/ziti/release-next/quickstart/docker/image/ziti-cli-functions.sh)"
 
 # Setup nginx
 sudo apt update
