@@ -1,10 +1,11 @@
-if [ "$ZITI_CLIENT" == ""] then
-    if [ "$1" == ""] then
+#!/bin/sh
+if ["$ZITI_CLIENT" == ""]; then
+    client_name=$1
+    if ["$1" == ""]; then
         echo "Enter client id (Alphanumeric only):"
         read client_name
-    else 
-        client_name=$1
     fi
+
     export ZITI_CLIENT=$client_name
 fi
 

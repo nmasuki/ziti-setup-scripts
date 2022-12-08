@@ -1,6 +1,6 @@
 sudo apt update && sudo apt install jq -y
 
-if [ "ZITI_CLIENT" == ""] then
+if [ "$ZITI_CLIENT" == ""] then
     if [ "$1" == ""]; then
         echo "Enter client id (Alphanumeric only):"
         read client_name
@@ -18,6 +18,8 @@ export ZITI_EDGE_CONTROLLER_HOSTNAME="${EXTERNAL_DNS}"
 export ZITI_EDGE_ROUTER_HOSTNAME="${EXTERNAL_DNS}"
 export ZITI_EDGE_CONTROLLER_PORT=8441
 export ZITI_EDGE_ROUTER_PORT=8442
+
+#!/bin/sh
 
 # now download, source, and execute the expressInstall function
 source /dev/stdin <<< "$(wget -qO- https://raw.githubusercontent.com/openziti/ziti/release-next/quickstart/docker/image/ziti-cli-functions.sh)"; expressInstall

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # setup Linux Tunneller in a clients network/server https://openziti.github.io/docs/core-concepts/clients/tunnelers/linux/
 
 # 1. Run the script for your OS to install ziti-edge-tunnel.

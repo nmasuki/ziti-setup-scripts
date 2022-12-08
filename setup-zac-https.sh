@@ -1,10 +1,11 @@
-if [ "ZITI_CLIENT" == ""] then
-    if [ "$1" == ""] then
+#!/bin/sh
+if ["$ZITI_CLIENT" == ""]; then
+    client_name=$1
+    if ["$1" == ""]; then
         echo "Enter client id (Alphanumeric only):"
         read client_name
-    else
-        client_name=$1
     fi
+
     export ZITI_CLIENT=$client_name
 fi
 
@@ -13,6 +14,7 @@ source ~/.ziti/quickstart/${ZITI_CLIENT}/${ZITI_CLIENT}.env
 
 # Checkout some scripts
 git clone https://github.com/nmasuki/ziti-setup-scripts.git "${ZITI_HOME}/treatfend-scripts"
+git pull
 cd "${ZITI_HOME}/treatfend-scripts"
 
 source /dev/stdin <<< "$(wget -qO- https://raw.githubusercontent.com/openziti/ziti/release-next/quickstart/docker/image/ziti-cli-functions.sh)"
