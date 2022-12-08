@@ -2,7 +2,7 @@ if [ "ZITI_CLIENT" == ""] then
     if [ "$1" == ""]; then
         echo "Enter client id (Alphanumeric only):"
         read client_name
-    elif
+    else 
         client_name=$1
     fi
     export ZITI_CLIENT=$client_name
